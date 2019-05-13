@@ -1,0 +1,38 @@
+/* BEFEHLE:  kara.
+ *   move()  turnRight()  turnLeft()
+ *   putLeaf()  removeLeaf()
+ *
+ * SENSOREN: kara.
+ *   treeFront()  treeLeft()  treeRight()
+ *   mushroomFront()  onLeaf()
+ */
+
+// hier können Sie eigene Methoden definieren
+function go() {
+    if (!kara.treeFront()) {
+        kara.move();
+    }
+    else {
+        if (kara.treeLeft()) {
+            kara.turnRight();
+        }
+        else {
+            kara.turnLeft();
+        }
+    }
+}
+
+function pickUp() {
+  if (kara.onLeaf()) {
+      kara.removeLeaf();
+  }
+}    
+
+
+// hier kommt das Hauptprogramm hin, zB:
+while (kara.treeFront() || kara.treeLeft() || kara.treeRight()) {
+    pickUp();
+    go();
+}
+
+  
